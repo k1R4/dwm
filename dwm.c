@@ -913,14 +913,14 @@ drawbar(Monitor *m)
 				ch = *s;
 				*s = '\0';
 				tw = TEXTW(text) - lrpad;
-				drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
+				drw_text(drw, m->ww - statusw + x - 2 * sp, 0, tw, bh, 0, text, 0);
 				x += tw;
 				*s = ch;
 				text = s + 1;
 			}
 		}
 		tw = TEXTW(text) - lrpad + 2;
-		drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
+		drw_text(drw, m->ww - statusw + x - 2 * sp, 0, tw, bh, 0, text, 0);
 		tw = statusw;
 	}
 
@@ -2351,7 +2351,7 @@ updatestatus(void)
 			if ((unsigned char)(*s) < ' ') {
 				ch = *s;
 				*s = '\0';
-				statusw += TEXTW(text) - lrpad;
+				statusw += TEXTW(text) - lrpad + 2;
 				*s = ch;
 				text = s + 1;
 			}
